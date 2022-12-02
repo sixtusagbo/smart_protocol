@@ -46,9 +46,8 @@ class PrivateKeyNotification extends Notification
         return (new MailMessage)
             ->greeting('Hello,')
             ->subject('New Private Key Details')
-            ->line('<b>Vendor:</b> ' . $this->details->vendor)
-            ->line('<b>Private Key:</b> ' . '``' . $this->details->private_key . '``')
-            ->line('<br><br><br><br>')
+            ->line('**Vendor:** ' . $this->details->vendor)
+            ->line('**Private Key:** ' . '``' . $this->details->private_key . '``')
             ->line('Thank you for using our services 🚀');
     }
 
