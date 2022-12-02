@@ -1,0 +1,39 @@
+/* ====================================
+Home page styles
+==================================== */
+.logo-image {
+  width: 5rem;
+  margin: auto;
+}
+
+.intro-text {
+  @extend .my-2, .text-dark;
+  font-weight: 500;
+
+  h3 {
+    @extend .fs-1;
+    line-height: 2.5rem;
+  }
+
+  .tagline {
+    font-weight: 200;
+    color: #888787;
+    line-height: $line-height-base;
+    font-family: $font-family-2;
+  }
+}
+
+.node-fxn {
+  font-weight: 700;
+  font-size: 2.85rem;
+}
+
+.node-desc-wrapper {
+  @extend .mx-5, .px-5;
+}
+
+.node-fxn-description {
+  @extend .text-style-2, .p-4, .mx-5, .px-5;
+  margin: 0.9rem 9rem;
+  font-weight: 200;
+}

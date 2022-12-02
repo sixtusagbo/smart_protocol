@@ -1,0 +1,47 @@
+.my-lg {
+  margin: 6rem auto;
+}
+
+.fw-300 {
+  font-weight: 300;
+}
+
+.py-3-mod {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.header {
+  @extend .my-lg, .w-100;
+}
+
+.text-style-2 {
+  opacity: .7;
+  color: #4b5563;
+  font-family: $font-family-2;
+}
+
+.action-btn {
+  border-radius: 0 !important;
+  border: none;
+  background-color: #3B99FB;
+  color: #ffffff;
+}
+
+.wallets-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .wallets-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .wallets-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

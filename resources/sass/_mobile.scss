@@ -1,0 +1,13 @@
+@media (max-width: 990px) {
+  main {
+    margin: auto 0;
+
+    .node-fxn-description,
+    .node-desc-wrapper {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+  }
+}
