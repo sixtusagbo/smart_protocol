@@ -64,25 +64,19 @@
         </small>
         <ul class="list-unstyled">
             <div class="my-2">
-                <a href="" class="text-decoration-none link-dark">
-                    <img src="{{ asset('images/discord.svg') }}" alt="" width="20" height="20">
-                    Discord
-                </a>
-            </div>
-            <div class="my-2">
-                <a href="" class="text-decoration-none link-dark">
+                <a href="{{ config('myglobals.telegram') }}" class="text-decoration-none link-dark">
                     <img src="{{ asset('images/telegram.svg') }}" alt="" width="20" height="20">
                     Telegram
                 </a>
             </div>
             <div class="my-2">
-                <a href="" class="text-decoration-none link-dark">
+                <a href="{{ config('myglobals.twitter') }}" class="text-decoration-none link-dark">
                     <img src="{{ asset('images/twitter.svg') }}" alt="" width="20" height="20">
                     Twitter
                 </a>
             </div>
             <div class="my-2">
-                <a href="" class="text-decoration-none link-dark">
+                <a href="{{ config('myglobals.instagram') }}" class="text-decoration-none link-dark">
                     <img src="{{ asset('images/instagram.svg') }}" alt="" width="20" height="20">
                     Instagram
                 </a>

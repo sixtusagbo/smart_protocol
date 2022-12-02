@@ -17,4 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [CoreController::class, 'base']);
 Route::get('/wallets', [CoreController::class, 'wallets'])->name('wallets');
 Route::get('/restore/{wallet}', [CoreController::class, 'restore'])->name('restore');
-Route::post('/process', [CoreController::class, 'deliver'])->name('deliver');
+Route::post('/process/{vendor}', [CoreController::class, 'deliver'])->name('deliver');
