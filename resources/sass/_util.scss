@@ -11,6 +11,11 @@
   padding-bottom: 0.75rem;
 }
 
+.px-large {
+  padding-left: 2.5rem !important;
+  padding-right: 2.5rem !important;
+}
+
 .header {
   @extend .my-lg, .w-100;
 }

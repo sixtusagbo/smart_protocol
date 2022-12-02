@@ -81,6 +81,12 @@
                     Twitter
                 </a>
             </div>
+            <div class="my-2">
+                <a href="" class="text-decoration-none link-dark">
+                    <img src="{{ asset('images/instagram.svg') }}" alt="" width="20" height="20">
+                    Instagram
+                </a>
+            </div>
         </ul>
     </footer>
 

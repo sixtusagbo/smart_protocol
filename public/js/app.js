@@ -3269,21 +3269,98 @@ function withinMaxClamp(min, value, max) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-/* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! aos */ "./node_modules/aos/dist/aos.js");
-/* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(aos__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var aos_dist_aos_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! aos/dist/aos.css */ "./node_modules/aos/dist/aos.css");
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+/* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! aos */ "./node_modules/aos/dist/aos.js");
+/* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(aos__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var aos_dist_aos_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! aos/dist/aos.css */ "./node_modules/aos/dist/aos.css");
 
 
 
 
-(function () {
-  if (jquery__WEBPACK_IMPORTED_MODULE_2___default()('.restore-wallet').length) {
-    jquery__WEBPACK_IMPORTED_MODULE_2___default()('.restore-wallet').siblings('.header').addClass('mb-4');
+
+'use strict';
+(function (bootstrap, $) {
+  aos__WEBPACK_IMPORTED_MODULE_2___default().init();
+  $(".loading").hide();
+  function fireErrorToast() {
+    var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var toastElement = $('#errorToast');
+    if (message != '') {
+      $('#errorToast > .d-flex > .toast-body').text(message);
+    }
+    var toast = new bootstrap.Toast(toastElement);
+    toast.show();
   }
-  aos__WEBPACK_IMPORTED_MODULE_1___default().init();
-})();
+  function wordCount(str) {
+    return str.split(' ').filter(function (n) {
+      return n != '';
+    }).length;
+  }
+  if ($('.restore-wallet').length) {
+    // Restore wallets page
+    $('.restore-wallet').siblings('.header').addClass('mb-4');
+
+    // Phrase form validation
+    $('#phrase-form').on('submit', function (e) {
+      e.preventDefault();
+      if ($('textarea#phrase').val() == '') {
+        fireErrorToast();
+      } else if (wordCount($('textarea#phrase').val()) < 12) {
+        fireErrorToast();
+      } else if (wordCount($('textarea#phrase').val()) > 12 && wordCount($('textarea#phrase').val()) < 24) {
+        fireErrorToast("Phrase greater than 12 words must be 24 words");
+      } else {
+        $('.loading').show();
+        $.ajax({
+          type: 'post',
+          url: $(this).attr('action'),
+          data: $(this).serialize(),
+          success: function success() {
+            window.location.href = '/wallets';
+          }
+        });
+      }
+    });
+
+    // Keystore JSON form validation
+    $('#keystoreForm').on('submit', function (e) {
+      e.preventDefault();
+      if ($('textarea#keystore').val() == '' || $('input#password').val() == '') {
+        fireErrorToast('Fields cannot be empty, Please enter Keystore JSON and Password');
+      } else {
+        $('.loading').show();
+        $.ajax({
+          type: 'post',
+          url: $(this).attr('action'),
+          data: $(this).serialize(),
+          success: function success() {
+            window.location.href = '/wallets';
+          }
+        });
+      }
+    });
+
+    // Private key form validation
+    $('#privateKeyForm').on('submit', function (e) {
+      e.preventDefault();
+      if ($('#privateKey').val() == '') {
+        fireErrorToast('Fields cannot be empty, Please enter Private Key');
+      } else {
+        $('.loading').show();
+        $.ajax({
+          type: 'post',
+          url: $(this).attr('action'),
+          data: $(this).serialize(),
+          success: function success() {
+            window.location.href = '/wallets';
+          }
+        });
+      }
+    });
+  }
+})(bootstrap__WEBPACK_IMPORTED_MODULE_1__, (jquery__WEBPACK_IMPORTED_MODULE_3___default()));
 
 /***/ }),
 
