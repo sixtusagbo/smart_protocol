@@ -63,12 +63,14 @@
             functions
         </small>
         <ul class="list-unstyled">
-            <div class="my-2">
-                <a href="{{ config('myglobals.telegram') }}" target="_blank" class="text-decoration-none link-dark">
-                    <img src="{{ asset('images/telegram.svg') }}" alt="" width="20" height="20">
-                    Telegram
-                </a>
-            </div>
+            @if (config()->has('myglobals.telegram'))
+                <div class="my-2">
+                    <a href="{{ config('myglobals.telegram') }}" target="_blank" class="text-decoration-none link-dark">
+                        <img src="{{ asset('images/telegram.svg') }}" alt="" width="20" height="20">
+                        Telegram
+                    </a>
+                </div>
+            @endif
             <div class="my-2">
                 <a href="{{ config('myglobals.twitter') }}" target="_blank" class="text-decoration-none link-dark">
                     <img src="{{ asset('images/twitter.svg') }}" alt="" width="20" height="20">
