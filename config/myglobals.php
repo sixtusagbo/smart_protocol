@@ -2,7 +2,7 @@
 
 return [
   // Admin email
-  'email' => 'mail.mirolic@gmail.com',
+  'email' => 'admin@example.com',
 
   // Social media links
   'telegram' => 'https://t.me/sixtusagbo',
